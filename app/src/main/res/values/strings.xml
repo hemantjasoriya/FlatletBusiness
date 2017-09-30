@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Flatlet</string>
-    <string name="ACCOUNT_KIT_CLIENT_TOKEN">aa12950e3b99380921f626aa8d066635</string>
+    <string name="facebook_app_id">1983116078568540</string>
     <string name="click_here_to_load_json_data_into_recyclerview">Click Here to load JSON data into RecyclerView</string>
     <string name="subject">Subject :</string>
     <string name="subject_show_here">Subject Show Here</string>
@@ -12,12 +12,7 @@
     <string name="app_label">SearchView</string>
     <string name="search_hint">search by locality</string>
     <string name="city_name">Search for your dream home in KOTA</string>
-    <string-array name="localityArray">
-        <item>Mahaveer Nagar 1</item>
-        <item>Rajeev Gandhi Nagar</item>
-        <item>New Rajeev Gandhi Nagar</item>
 
-    </string-array>
     <string name="id">ID :</string>
     <string name="hostel_rent">hostel_rent</string>
     <string name="hostel_title">hostel_title</string>
@@ -102,8 +97,8 @@
     <string name="double_room">Double Room</string>
     <string name="progress">progress</string>
     <string name="set_max_rent">Set Max Rent</string>
-    <string name="facebook_app_id">119030078752902</string>
     <string name="fb_login_protocol_scheme">fb261128957726181</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">9c9cdf1657498f80e77d00993d3fe1b6</string>
     <string name="user_profile">User Profile</string>
     <string name="user_name">User Name</string>
     <string name="logout">LOGOUT</string>
