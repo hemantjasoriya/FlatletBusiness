@@ -9,8 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 
-
-public class FirstActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
 
@@ -35,13 +34,12 @@ public class FirstActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first);
-        int flag=getIntent().getFlags();
-        if (flag==0){
+        setContentView(R.layout.login_activity);
+        int flag = getIntent().getFlags();
+        if (flag == 0) {
             fragment = new LoginFragment();
-        }
-        else {
-            fragment=new CreateProfileFragment();
+        } else {
+            fragment = new CreateProfileFragment();
 
         }
         fragmentTransaction = getSupportFragmentManager().beginTransaction();

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Splash"
+            android:name=".splash.Splash"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,9 +31,11 @@
         <meta-data android:name="com.facebook.accountkit.ClientToken"
             android:value="@string/ACCOUNT_KIT_CLIENT_TOKEN" />
 
-        <activity android:name=".FirstActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity
             android:name="com.facebook.accountkit.ui.AccountKitActivity" />
+        <activity android:name=".secondActivity.SecondActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

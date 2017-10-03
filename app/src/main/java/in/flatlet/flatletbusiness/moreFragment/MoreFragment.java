@@ -1,4 +1,4 @@
-package in.flatlet.flatletbusiness;
+package in.flatlet.flatletbusiness.moreFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import in.flatlet.flatletbusiness.R;
 
 
 public class MoreFragment extends Fragment implements AdapterView.OnItemClickListener {

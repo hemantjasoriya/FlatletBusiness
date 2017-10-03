@@ -1,4 +1,4 @@
-package in.flatlet.flatletbusiness;
+package in.flatlet.flatletbusiness.moreFragment;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,13 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import in.flatlet.flatletbusiness.R;
 
-class MoreFragmentArrayAdapter extends ArrayAdapter<String> {
+
+public class MoreFragmentArrayAdapter extends ArrayAdapter<String> {
     private final String[] moreFragmentItems;
     private final Context context;
     private final int[] moreFragmentVectors;
 
-    MoreFragmentArrayAdapter(Context context, String[] moreFragmentItems, int[] moreFragmentVectors) {
+    public MoreFragmentArrayAdapter(Context context, String[] moreFragmentItems, int[] moreFragmentVectors) {
         super(context, android.R.layout.simple_list_item_1, moreFragmentItems);
         this.context = context;
         this.moreFragmentItems = moreFragmentItems;
@@ -30,9 +32,9 @@ class MoreFragmentArrayAdapter extends ArrayAdapter<String> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.listitems, parent, false);
         }
-        TextView textView = (TextView) convertView.findViewById(R.id.list_text);
+        TextView textView =  convertView.findViewById(R.id.list_text);
         textView.setText(moreFragmentItems[position]);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.list_vector);
+        ImageView imageView =  convertView.findViewById(R.id.list_vector);
         imageView.setImageResource(moreFragmentVectors[position]);
         return convertView;
     }
