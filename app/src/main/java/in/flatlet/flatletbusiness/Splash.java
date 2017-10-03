@@ -7,7 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
-
+import com.facebook.accountkit.AccessToken;
+import com.facebook.accountkit.AccountKit;
 
 
 public class Splash extends AppCompatActivity {
@@ -21,9 +22,17 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                Intent intent=null;
+                AccessToken accessToken= AccountKit.getCurrentAccessToken();
+                if (accessToken==null){
+                    intent = new Intent(Splash.this, FirstActivity.class);
+                    intent.setFlags(1);
+                }
+                else {
 
-                Intent intent = new Intent(Splash.this, FirstActivity.class);
-                intent.setFlags(1);
+                }
+
+
                 startActivity(intent);
                 finish();
             }

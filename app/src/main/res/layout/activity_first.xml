@@ -1,61 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_relative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="in.flatlet.flatletbusiness.FirstActivity">
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/profile_toolbar"
-        android:background="@color/colorPrimary">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:layout_gravity="center"
-            android:id="@+id/toolbar_title"
-            android:textSize="26sp"
-            android:textColor="#ffffff"/>
-    </android.support.v7.widget.Toolbar>
-
-    <ImageView
-        android:id="@+id/title"
-        app:srcCompat="@drawable/ic_crown"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:alpha=".87"
-        android:layout_centerInParent="true" />
-    <TextView
-        android:id="@+id/subtitle"
-        android:layout_above="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:textSize="@dimen/login_title"
-        android:padding="5dp"
-        android:text="@string/welcome_to_flatlet"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/title"
-        android:padding="15dp"
-        android:text="@string/get_started"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ffffff"
-        android:background="#ef7b7b" />
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:visibility="invisible"
-        android:layout_below="@+id/loginButton"
-        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
