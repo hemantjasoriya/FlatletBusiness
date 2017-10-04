@@ -1,7 +1,9 @@
 package in.flatlet.flatletbusiness;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -107,12 +109,14 @@ public class LoginFragment extends Fragment {
                     AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
                         @Override
                         public void onSuccess(final Account account) {
-                            // Get Account Kit ID
-                            String accountKitId = account.getId();
+                            SharedPreferences sharedPreferences=getActivity().getSharedPreferences("personalInfo", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor=sharedPreferences.edit();
 
                             // Get phone number
                             PhoneNumber phoneNumber = account.getPhoneNumber();
-                            String phoneNumberString = phoneNumber.toString();
+                            String phoneNumberString = phoneNumber.toString().replace("+91","");
+                            editor.putString("userMobile",phoneNumberString);
+                            editor.apply();
 
                             // start new activity
                             Intent intent=new Intent(getActivity(),MainActivity.class);
