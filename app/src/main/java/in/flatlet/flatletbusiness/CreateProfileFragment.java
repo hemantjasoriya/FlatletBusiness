@@ -33,6 +33,7 @@ public class CreateProfileFragment extends Fragment {
         buttonProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(getActivity(), MainActivity.class).setFlags(1));
 
                 startActivity(new Intent(getActivity(),MainActivity.class));
 

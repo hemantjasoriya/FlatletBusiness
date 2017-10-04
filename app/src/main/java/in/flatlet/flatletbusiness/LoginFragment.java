@@ -11,9 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitCallback;
@@ -24,7 +29,8 @@ import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
 
-
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -118,9 +124,41 @@ public class LoginFragment extends Fragment {
                             editor.putString("userMobile",phoneNumberString);
                             editor.apply();
 
-                            // start new activity
-                            Intent intent=new Intent(getActivity(),MainActivity.class);
-                            startActivity(intent);
+                            String url = "http://flatlet.in/webServicesBusiness/flatletusercheck.jsp?phoneNumberString=" + phoneNumberString;
+
+                            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                                    new Response.Listener<JSONObject>() {
+                                        @Override
+                                        public void onResponse(JSONObject response) {
+                                            // Display the first 500 characters of the response string.
+                                            try {
+                                                if (response.getInt("tag") == 0) {
+                                                    Fragment fragment = new CreateProfileFragment();
+                                                    android.support.v4.app.FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                                    fragmentTransaction.replace(R.id.login_relative, fragment, "fragmetHome");
+                                                    fragmentTransaction.addToBackStack(null);
+                                                    fragmentTransaction.commit();
+
+                                                } else {
+
+                                                    startActivity(new Intent(getActivity(), MainActivity.class).setFlags(1));
+
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(getContext(), "Server error", Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+                            RequestQueue queue1 = Volley.newRequestQueue(getActivity());
+                            queue1.add(jsonObjectRequest);
+
                         }
 
                         @Override
