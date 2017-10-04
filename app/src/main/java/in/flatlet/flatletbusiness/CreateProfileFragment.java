@@ -1,5 +1,6 @@
 package in.flatlet.flatletbusiness;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -32,6 +33,8 @@ public class CreateProfileFragment extends Fragment {
         buttonProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                startActivity(new Intent(getActivity(),MainActivity.class));
 
             }
         });

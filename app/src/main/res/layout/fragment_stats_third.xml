@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<com.mikhaellopez.circularprogressbar.CircularProgressBar
+    android:id="@+id/circularProgress1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="50dp"
+    app:cpb_background_progressbar_color="#96b7c8"
+    app:cpb_background_progressbar_width="5dp"
+    app:cpb_progressbar_color="#3d42cc"
+    app:cpb_progressbar_width="10dp"
+    app:cpb_progress="40" />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/ic_eye_black"
+        android:layout_alignTop="@+id/circularProgress1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="103dp" />
+
 
 </RelativeLayout>
