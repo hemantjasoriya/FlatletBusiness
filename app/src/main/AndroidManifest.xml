@@ -34,6 +34,7 @@
         <activity android:name=".LoginActivity"></activity>
         <activity
             android:name="com.facebook.accountkit.ui.AccountKitActivity" />
+        <activity android:name=".secondActivity.SecondActivity"/>
     </application>
 
 </manifest>

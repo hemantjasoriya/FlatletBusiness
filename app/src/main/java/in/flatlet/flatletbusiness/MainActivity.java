@@ -1,6 +1,5 @@
 package in.flatlet.flatletbusiness;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -35,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.navigation_more:
-                   Fragment fragment = new MoreFragment();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.replace(R.id.content, fragment, "fragmentSearch");
-            fragmentTransaction.commit();
-                break;
+                    Fragment fragment = new MoreFragment();
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.replace(R.id.content, fragment, "fragmentSearch");
+                    fragmentTransaction.commit();
+                    break;
             }
             return true;
         }
@@ -53,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        Intent intent = getIntent();
-        int i = intent.getFlags();
+        int i = getIntent().getFlags();
         // go to home fragment
         Fragment fragment = new HomeFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
