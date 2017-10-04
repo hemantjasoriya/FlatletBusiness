@@ -34,7 +34,7 @@ import org.json.JSONObject;
 
 
 /**
- * Created by javax on 20-Aug-17.
+ * Created by javax on 02-Oct-17.
  */
 
 public class LoginFragment extends Fragment {
@@ -124,7 +124,7 @@ public class LoginFragment extends Fragment {
                             editor.putString("userMobile",phoneNumberString);
                             editor.apply();
 
-                            String url = "http://flatlet.in/webServicesBusiness/flatletusercheck.jsp?phoneNumberString=" + phoneNumberString;
+                            String url = "http://flatlet.in/webservicesbusiness/flatletusercheck.jsp?phoneNumberString=" + phoneNumberString;
 
                             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                                     new Response.Listener<JSONObject>() {
