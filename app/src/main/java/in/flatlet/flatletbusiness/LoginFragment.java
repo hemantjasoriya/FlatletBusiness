@@ -57,7 +57,6 @@ public class LoginFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
     }
 
     @Override
@@ -141,7 +140,7 @@ public class LoginFragment extends Fragment {
 
                                                 } else {
 
-                                                    startActivity(new Intent(getActivity(), MainActivity.class).setFlags(1));
+                                                    startActivity(new Intent(getActivity(), MainActivity.class));
 
                                                 }
                                             } catch (JSONException e) {
