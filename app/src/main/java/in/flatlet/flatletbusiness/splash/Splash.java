@@ -33,11 +33,11 @@ public class Splash extends AppCompatActivity {
                 if (accessToken == null) {
                     startActivity(new Intent(Splash.this, LoginActivity.class).setFlags(0));
                 }
-                else if (sharedPreferences.getString("userName", "johndoe").equals("johndoe")) {
+                else if (sharedPreferences.getString("firstName", "johndoe").equals("johndoe")) {
                     startActivity(new Intent(Splash.this, LoginActivity.class).setFlags(1));
 
                 } else {
-                    startActivity(new Intent(Splash.this, MainActivity.class).setFlags(1));
+                    startActivity(new Intent(Splash.this, MainActivity.class));
                 }
 
 

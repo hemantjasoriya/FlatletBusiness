@@ -13,6 +13,7 @@
             android:id="@+id/views"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:layout_margin="10dp">
 
             <ImageView
@@ -54,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/views"
+            android:padding="10dp"
             android:layout_margin="10dp">
 
             <RelativeLayout
@@ -66,16 +68,16 @@
                     android:id="@+id/favouriteCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="15"
-                    android:textSize="28sp" />
+                    android:textSize="28sp"
+                    android:text="12"/>
 
                 <TextView
                     android:id="@+id/textFavorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/favouriteCount"
-                    android:text="people marked the
-hostel as their favourite" />
+                    android:text="people marked the \nhostel as their favourite"
+                    android:textAlignment="viewStart" />
             </RelativeLayout>
 
             <ImageView

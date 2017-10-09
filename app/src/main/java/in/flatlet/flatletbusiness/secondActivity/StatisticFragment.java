@@ -1,10 +1,10 @@
 package in.flatlet.flatletbusiness.secondActivity;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,18 +23,14 @@ import org.json.JSONObject;
 import in.flatlet.flatletbusiness.R;
 
 
-
 public class StatisticFragment extends Fragment {
 
 
-    private String hostel_title, hostel_rent, eve_snacks, ownership, ame_toilet_attached, ame_elevator, dbqry, primary_contact, secondary_contact, CCTV1, rent_single_nonac, rent_single_ac, rent_double_nonac, rent_double_ac, gender1, address_secondary, viewsCountTotal;
-    private TextView text_single_nonac, text_single_ac, text_double_nonac, text_double_ac, area_single_room, area_double_room, gender, locality, textViewRating, textViewTotalRating, viewsCount;
+    private String hostel_title, hostel_rent, eve_snacks, ownership, ame_toilet_attached, ame_elevator, dbqry, dbqry2, primary_contact, secondary_contact, CCTV1, rent_single_nonac, rent_single_ac, rent_double_nonac, rent_double_ac, gender1, address_secondary, viewsCountTotal, countFavourite;
+    private TextView text_single_nonac, text_single_ac, text_double_nonac, text_double_ac, area_single_room, area_double_room, gender, locality, viewsCount, favouriteCount;
     private ProgressBar progressBar;
-    private double location_latitude = 3.14, x, y;
-    private double location_longitude = 3.14;
-    private int total_ratings, imageCount;
-    private boolean birthSort;
-    Intent callIntent;
+    private double x, y;
+    private int imageCount;
 
 
     @Nullable
@@ -48,6 +44,7 @@ public class StatisticFragment extends Fragment {
         area_single_room = view.findViewById(R.id.area_single_room);
         area_double_room = view.findViewById(R.id.area_double_room);
         viewsCount = view.findViewById(R.id.viewCount);
+        favouriteCount = view.findViewById(R.id.favouriteCount);
         gender = view.findViewById(R.id.gender);
         locality = view.findViewById(R.id.locality);
 
@@ -61,6 +58,8 @@ public class StatisticFragment extends Fragment {
         hostel_title = getActivity().getIntent().getStringExtra("hostel_title");
         dbqry = "Select * from hostel_specs where title=" + "'" + hostel_title + "'";
         dbqry = dbqry.replace(" ", "%20");
+        dbqry2 = "SELECT `user_mobile` FROM `user_favourites` WHERE title = '" + hostel_title + "'";
+        dbqry2 = dbqry2.replace(" ", "%20");
         fetch_details();
 
 
@@ -69,7 +68,9 @@ public class StatisticFragment extends Fragment {
 
     private void fetch_details() {
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("http://flatlet.in/webservices/completeHostelData.jsp?dbqry=" + dbqry, null, new Response.Listener<JSONObject>() {
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("http://flatlet.in/webservicesbusiness/completeHostelData.jsp?dbqry=" + dbqry + "&dbqry2=" + dbqry2, null, new Response.Listener<JSONObject>() {
+
             @Override
             public void onResponse(JSONObject response) {
                 new ParsingResponseTask().execute(response);
@@ -95,8 +96,6 @@ public class StatisticFragment extends Fragment {
             try {
                 primary_contact = response[0].getString("contact_primary");
                 secondary_contact = response[0].getString("contact_secondary");
-                location_latitude = response[0].getDouble("location_latitude");
-                location_longitude = response[0].getDouble("location_longitude");
                 rent_single_nonac = response[0].getString("rent_single_nonac");
                 rent_single_ac = response[0].getString("rent_single_ac");
                 rent_double_nonac = response[0].getString("rent_double_nonac");
@@ -112,7 +111,7 @@ public class StatisticFragment extends Fragment {
                 eve_snacks = response[0].getString("eve_snacks");
                 ownership = response[0].getString("ownership");
                 imageCount = Integer.parseInt(response[0].getString("ImgCount"));
-                total_ratings = response[0].getInt("total_ratings");
+                countFavourite = String.valueOf(response[0].getInt("countFavourite"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -131,6 +130,8 @@ public class StatisticFragment extends Fragment {
             gender.setText(gender1);
             locality.setText(address_secondary);
             viewsCount.setText(viewsCountTotal);
+            favouriteCount.setText(countFavourite);
+            Log.i("TAG", "onPostExecute: " + countFavourite);
 
 
         }
