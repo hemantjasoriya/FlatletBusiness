@@ -145,7 +145,6 @@ public class LoginFragment extends Fragment {
 
                                             } else {
                                                 Intent intent = new Intent(getActivity(), MainActivity.class);
-                                                intent.putExtra("jsonArray", response.toString());
                                                 startActivity(intent);
                                             }
 

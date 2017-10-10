@@ -49,6 +49,7 @@ public class CreateProfileFragment extends Fragment {
                 editor.putString("lastName", editTextLast.getText().toString());
                 editor.apply();
                 startActivity(new Intent(getActivity(), MainActivity.class));
+
                 // send data to database
                 sendToDatabase();
 
@@ -81,4 +82,6 @@ public class CreateProfileFragment extends Fragment {
         RequestQueue queue2 = Volley.newRequestQueue(getActivity());
         queue2.add(stringRequest);
     }
+
+
 }
