@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="Edit Details"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/approval_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:alpha="0.87"
+        android:visibility="visible"
+        app:srcCompat="@drawable/ic_approval" />
+
+    <EditText
+        android:id="@+id/edit_rent_single_nonac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/approval_image"
+        android:layout_marginTop="10dp"
+        android:hint="Rent for single non ac room"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColorHint="@color/accent" />
+
+    <EditText
+        android:id="@+id/edit_rent_single_ac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_rent_single_nonac"
+        android:layout_marginTop="10dp"
+        android:hint="Enter the new rent for single ac room"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColorHint="@color/accent" />
+
+    <EditText
+        android:id="@+id/edit_rent_double_nonac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_rent_single_ac"
+        android:layout_marginTop="10dp"
+        android:hint="Enter the new rent for double non ac room"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColorHint="@color/accent" />
+
+    <EditText
+        android:id="@+id/edit_rent_double_ac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_rent_double_nonac"
+        android:layout_marginTop="10dp"
+        android:hint="Enter the new rent for double ac room"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColorHint="@color/accent" />
+
+    <Button
+        android:id="@+id/submitNewRentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_rent_double_ac"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="70dp"
+        android:background="@color/colorAccent"
+        android:text="Update" />
+
+
+    <ProgressBar
+        android:id="@+id/progresBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+</RelativeLayout>

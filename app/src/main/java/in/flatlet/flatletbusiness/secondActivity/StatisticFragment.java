@@ -1,5 +1,6 @@
 package in.flatlet.flatletbusiness.secondActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import in.flatlet.flatletbusiness.EditDetailsActivity;
 import in.flatlet.flatletbusiness.R;
 
 
@@ -31,6 +34,7 @@ public class StatisticFragment extends Fragment {
     private ProgressBar progressBar;
     private double x, y;
     private int imageCount;
+    private Button editDetails;
 
 
     @Nullable
@@ -47,6 +51,8 @@ public class StatisticFragment extends Fragment {
         favouriteCount = view.findViewById(R.id.favouriteCount);
         gender = view.findViewById(R.id.gender);
         locality = view.findViewById(R.id.locality);
+        editDetails = view.findViewById(R.id.editDetails);
+
 
 
         return view;
@@ -61,6 +67,13 @@ public class StatisticFragment extends Fragment {
         dbqry2 = "SELECT `user_mobile` FROM `user_favourites` WHERE title = '" + hostel_title + "'";
         dbqry2 = dbqry2.replace(" ", "%20");
         fetch_details();
+        editDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),EditDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

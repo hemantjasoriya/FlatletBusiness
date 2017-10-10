@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import in.flatlet.flatletbusiness.homeFragment.HomeFragment;
 import in.flatlet.flatletbusiness.moreFragment.MoreFragment;
+import in.flatlet.flatletbusiness.profileFragment.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.navigation_profile:
+                    Fragment fragment2 = new ProfileFragment();
+                    FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction2.addToBackStack(null);
+                    fragmentTransaction2.replace(R.id.content, fragment2, "ProfileFragment");
+                    fragmentTransaction2.commit();
+
 
                     break;
 
