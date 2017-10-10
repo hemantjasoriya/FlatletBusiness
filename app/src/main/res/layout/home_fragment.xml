@@ -43,16 +43,7 @@
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/ic_blank_image" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/hostel_gender"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignBottom="@+id/imageView1"
-                        android:layout_marginStart="10dp"
-                        android:textColor="#ff7256"
-                        android:layout_marginBottom="5dp"
-                        />
+
 
                     <TextView
                         android:id="@+id/hostel_title"
@@ -67,26 +58,7 @@
                         android:textSize="@dimen/hostel_title_recycler_card"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/hostel_rent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/imageView1"
-                        android:layout_marginEnd="10dp"
-                        android:padding="5dp"
-                        android:text="@string/hostel_rent"
-                        android:textSize="@dimen/hostel_rent_recycler_Card" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/hostel_rent"
-                        android:layout_centerHorizontal="true"
-                        android:layout_toStartOf="@+id/hostel_rent"
-                        android:padding="5dp"
-                        android:text="₹"
-                        android:textSize="@dimen/hostel_rent_recycler_Card" />
 
                     <TextView
                         android:id="@+id/hostel_address"
@@ -101,6 +73,7 @@
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
+
             <android.support.v7.widget.CardView
 
                 android:id="@+id/cardview2"
@@ -128,16 +101,6 @@
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/ic_blank_image" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/hostel_gender2"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignBottom="@+id/imageView2"
-                        android:layout_marginStart="10dp"
-                        android:textColor="#ff7256"
-                        android:layout_marginBottom="5dp"
-                        />
 
                     <TextView
                         android:id="@+id/hostel_title2"
@@ -152,26 +115,6 @@
                         android:textSize="@dimen/hostel_title_recycler_card"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/hostel_rent2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/imageView2"
-                        android:layout_marginEnd="10dp"
-                        android:padding="5dp"
-                        android:text="@string/hostel_rent"
-                        android:textSize="@dimen/hostel_rent_recycler_Card" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/hostel_rent2"
-                        android:layout_centerHorizontal="true"
-                        android:layout_toStartOf="@+id/hostel_rent2"
-                        android:padding="5dp"
-                        android:text="₹"
-                        android:textSize="@dimen/hostel_rent_recycler_Card" />
 
                     <TextView
                         android:id="@+id/hostel_address2"
@@ -187,10 +130,10 @@
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
+
             <android.support.v7.widget.CardView
 
-                android:id="@+id/cardview2"
-
+                android:id="@+id/cardview3"
                 android:layout_below="@+id/cardview2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -215,16 +158,6 @@
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/ic_blank_image" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/hostel_gender3"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignBottom="@+id/imageView3"
-                        android:layout_marginStart="10dp"
-                        android:textColor="#ff7256"
-                        android:layout_marginBottom="5dp"
-                        />
 
                     <TextView
                         android:id="@+id/hostel_title3"
@@ -239,26 +172,6 @@
                         android:textSize="@dimen/hostel_title_recycler_card"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/hostel_rent3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/imageView3"
-                        android:layout_marginEnd="10dp"
-                        android:padding="5dp"
-                        android:text="@string/hostel_rent"
-                        android:textSize="@dimen/hostel_rent_recycler_Card" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/hostel_rent3"
-                        android:layout_centerHorizontal="true"
-                        android:layout_toStartOf="@+id/hostel_rent3"
-                        android:padding="5dp"
-                        android:text="₹"
-                        android:textSize="@dimen/hostel_rent_recycler_Card" />
 
                     <TextView
                         android:id="@+id/hostel_address3"
@@ -274,8 +187,8 @@
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
 
+            <android.support.v7.widget.CardView
                 android:id="@+id/cardview4"
                 android:layout_below="@+id/cardview2"
                 android:layout_width="match_parent"
@@ -301,16 +214,6 @@
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/ic_blank_image" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/hostel_gender4"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignBottom="@+id/imageView4"
-                        android:layout_marginStart="10dp"
-                        android:textColor="#ff7256"
-                        android:layout_marginBottom="5dp"
-                        />
 
                     <TextView
                         android:id="@+id/hostel_title4"
@@ -325,26 +228,6 @@
                         android:textSize="@dimen/hostel_title_recycler_card"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/hostel_rent4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/imageView4"
-                        android:layout_marginEnd="10dp"
-                        android:padding="5dp"
-                        android:text="@string/hostel_rent"
-                        android:textSize="@dimen/hostel_rent_recycler_Card" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/hostel_rent4"
-                        android:layout_centerHorizontal="true"
-                        android:layout_toStartOf="@+id/hostel_rent4"
-                        android:padding="5dp"
-                        android:text="₹"
-                        android:textSize="@dimen/hostel_rent_recycler_Card" />
 
                     <TextView
                         android:id="@+id/hostel_address4"
@@ -360,6 +243,7 @@
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
+
             <android.support.v7.widget.CardView
 
                 android:id="@+id/cardview5"
@@ -387,16 +271,6 @@
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/ic_blank_image" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/hostel_gender5"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignBottom="@+id/imageView5"
-                        android:layout_marginStart="10dp"
-                        android:textColor="#ff7256"
-                        android:layout_marginBottom="5dp"
-                        />
 
                     <TextView
                         android:id="@+id/hostel_title5"
@@ -411,26 +285,6 @@
                         android:textSize="@dimen/hostel_title_recycler_card"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/hostel_rent5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/imageView5"
-                        android:layout_marginEnd="10dp"
-                        android:padding="5dp"
-                        android:text="@string/hostel_rent"
-                        android:textSize="@dimen/hostel_rent_recycler_Card" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/hostel_rent5"
-                        android:layout_centerHorizontal="true"
-                        android:layout_toStartOf="@+id/hostel_rent5"
-                        android:padding="5dp"
-                        android:text="₹"
-                        android:textSize="@dimen/hostel_rent_recycler_Card" />
 
                     <TextView
                         android:id="@+id/hostel_address5"

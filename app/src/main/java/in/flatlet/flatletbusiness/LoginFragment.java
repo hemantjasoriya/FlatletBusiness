@@ -63,7 +63,7 @@ public class LoginFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        loginButton = (Button) getActivity().findViewById(R.id.loginButton);
+        loginButton = getActivity().findViewById(R.id.loginButton);
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +122,7 @@ public class LoginFragment extends Fragment {
                             editor.putString("userMobile",phoneNumberString);
                             editor.apply();
 
-                            String url = "http://flatlet.in/webservicesbusiness/flatletusercheck.jsp?phoneNumberString=" + phoneNumberString;
+                            String url = "http://flatlet.in/webservicesbusiness/hostelByNumber.jsp?phoneNumber=" + phoneNumberString;
 
                             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,
                                     new Response.Listener<JSONArray>() {
