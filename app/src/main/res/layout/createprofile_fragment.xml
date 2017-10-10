@@ -10,7 +10,8 @@
         android:hint="First Name"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:maxLines="1"/>
+        android:maxLines="1"
+        android:inputType="textCapWords" />
 
     <EditText
         android:id="@+id/editTextLast"
@@ -19,7 +20,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:hint="Last Name"
-        android:maxLines="1" />
+        android:maxLines="1"
+        android:inputType="textCapWords" />
 
     <Button
         android:layout_width="wrap_content"

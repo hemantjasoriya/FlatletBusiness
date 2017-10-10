@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction1.addToBackStack(null);
                     fragmentTransaction1.replace(R.id.content, fragment1, "HomeFragment");
                     fragmentTransaction1.commit();
-
                     break;
 
                 case R.id.navigation_profile:

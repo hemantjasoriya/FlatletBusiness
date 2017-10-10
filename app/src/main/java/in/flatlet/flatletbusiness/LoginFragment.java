@@ -13,11 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
@@ -29,8 +28,8 @@ import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
 
+import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 
 /**
@@ -125,26 +124,29 @@ public class LoginFragment extends Fragment {
 
                             String url = "http://flatlet.in/webservicesbusiness/flatletusercheck.jsp?phoneNumberString=" + phoneNumberString;
 
-                            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                                    new Response.Listener<JSONObject>() {
+                            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,
+                                    new Response.Listener<JSONArray>() {
                                         @Override
-                                        public void onResponse(JSONObject response) {
+                                        public void onResponse(JSONArray response) {
+                                            String title = null;
                                             // Display the first 500 characters of the response string.
                                             try {
-                                                if (response.getInt("tag") == 0) {
-                                                    Fragment fragment = new CreateProfileFragment();
-                                                    android.support.v4.app.FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                                    fragmentTransaction.replace(R.id.login_relative, fragment, "fragmetHome");
-                                                    fragmentTransaction.addToBackStack(null);
-                                                    fragmentTransaction.commit();
-
-                                                } else {
-
-                                                    startActivity(new Intent(getActivity(), MainActivity.class));
-
-                                                }
+                                                title = response.getJSONObject(0).getString("title");
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
+                                            }
+                                            if (title.equals("1")) {
+                                                Fragment fragment = new CreateProfileFragment();
+                                                android.support.v4.app.FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                                fragmentTransaction.replace(R.id.login_relative, fragment, "fragmetHome");
+                                                fragmentTransaction.addToBackStack(null);
+                                                fragmentTransaction.commit();
+                                            } else if (title.equals("0")) {
+
+                                            } else {
+                                                Intent intent = new Intent(getActivity(), MainActivity.class);
+                                                intent.putExtra("jsonArray", response.toString());
+                                                startActivity(intent);
                                             }
 
                                         }
@@ -156,7 +158,7 @@ public class LoginFragment extends Fragment {
                                 }
                             });
                             RequestQueue queue1 = Volley.newRequestQueue(getActivity());
-                            queue1.add(jsonObjectRequest);
+                            queue1.add(jsonArrayRequest);
 
                         }
 
