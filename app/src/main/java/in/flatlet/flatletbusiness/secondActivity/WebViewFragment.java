@@ -19,9 +19,7 @@ import in.flatlet.flatletbusiness.R;
 
 import static in.flatlet.flatletbusiness.R.string.view;
 
-/**
- * Created by Dragon on 03-10-2017.
- */
+
 
 public class WebViewFragment extends Fragment {
     private WebView webView;
@@ -40,7 +38,7 @@ public class WebViewFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        /*String hostel_title = getActivity().getIntent().getStringExtra("hostel_title");*/
+        String hostel_title = getActivity().getIntent().getStringExtra("hostel_title");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         WebView.setWebContentsDebuggingEnabled(false);
@@ -65,7 +63,7 @@ public class WebViewFragment extends Fragment {
                 Toast.makeText(getContext(), "Can't Load the live tour", Toast.LENGTH_SHORT).show();
             }
         });
-        webView.loadUrl("http://images.flatlet.in/images/24%20Paradise"+"/_html5/MRF.html");
+        webView.loadUrl("http://images.flatlet.in/images/" + hostel_title + "/_html5/MRF.html");
 
 
     }

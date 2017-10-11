@@ -29,7 +29,9 @@ public class ImageSwitcherFragment extends Fragment {
 
 
         ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.viewPager1);
-        ImageSwitcherAdapter adapter = new ImageSwitcherAdapter(getContext());
+        String first_hostel = getActivity().getIntent().getStringExtra("hostel_title");
+        int arraySize = getActivity().getIntent().getIntExtra("imageCount",3);
+        ImageSwitcherAdapter adapter = new ImageSwitcherAdapter(getContext(),arraySize,first_hostel);
         viewPager.setAdapter(adapter);
     }
 }

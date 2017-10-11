@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -21,8 +22,9 @@ import in.flatlet.flatletbusiness.utility.MySingleton;
 
 public class EditDetailsActivity extends AppCompatActivity {
     private EditText edit_rent_double_nonac, edit_rent_double_ac, edit_rent_single_nonac, edit_rent_single_ac;
-    private Button submitNewRentButton;
     private ImageView approvalImage;
+    private ProgressBar progressBar;
+    private String value_rent_single_nonac, value_rent_single_ac, value_rent_double_nonac, value_rent_double_ac;
 
 
     @Override
@@ -33,16 +35,59 @@ public class EditDetailsActivity extends AppCompatActivity {
         edit_rent_double_nonac = (EditText) findViewById(R.id.edit_rent_double_nonac);
         edit_rent_single_nonac = (EditText) findViewById(R.id.edit_rent_single_nonac);
         edit_rent_single_ac = (EditText) findViewById(R.id.edit_rent_single_ac);
-        submitNewRentButton = (Button) findViewById(R.id.submitNewRentButton);
+        final Button submitNewRentButton = (Button) findViewById(R.id.submitNewRentButton);
         approvalImage = (ImageView) findViewById(R.id.approval_image);
+        approvalImage.setVisibility(View.INVISIBLE);
+        progressBar = (ProgressBar) findViewById(R.id.progresBar);
+        progressBar.setVisibility(View.INVISIBLE);
+        value_rent_single_nonac = getIntent().getStringExtra("rent_single_nonac");
+        value_rent_single_ac = getIntent().getStringExtra("rent_single_ac");
+        value_rent_double_nonac = getIntent().getStringExtra("rent_double_nonac");
+        value_rent_double_ac = getIntent().getStringExtra("rent_double_ac");
+
+
+        if (value_rent_single_nonac.equalsIgnoreCase("N/A")) {
+            edit_rent_single_nonac.setFocusable(false);
+            edit_rent_single_nonac.setEnabled(false);
+            value_rent_single_nonac = String.valueOf(0);
+        }
+
+        if (value_rent_single_ac.equalsIgnoreCase("N/A")) {
+            edit_rent_single_ac.setEnabled(false);
+            edit_rent_single_ac.setFocusable(false);
+            value_rent_single_ac = String.valueOf(0);
+        }
+        if (value_rent_double_nonac.equalsIgnoreCase("N/A")) {
+            edit_rent_double_nonac.setEnabled(false);
+            edit_rent_double_nonac.setFocusable(false);
+            value_rent_double_nonac = String.valueOf(0);
+        }
+        if (value_rent_double_ac.equalsIgnoreCase("N/A")) {
+            edit_rent_double_ac.setEnabled(false);
+            edit_rent_double_ac.setFocusable(false);
+            value_rent_double_ac = String.valueOf(0);
+        }
+
+        edit_rent_single_nonac.setText(value_rent_single_nonac);
+        edit_rent_single_ac.setText(value_rent_single_ac);
+        edit_rent_double_nonac.setText(value_rent_double_nonac);
+        edit_rent_double_ac.setText(value_rent_double_ac);
 
 
         submitNewRentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendUpdatedDetailsToDatabase();
+                progressBar.setVisibility(View.VISIBLE);
+                submitNewRentButton.setEnabled(false);
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
     }
 
 
@@ -52,23 +97,26 @@ public class EditDetailsActivity extends AppCompatActivity {
         String rent_double_nonac = edit_rent_double_nonac.getText().toString();
         String rent_double_ac = edit_rent_double_ac.getText().toString();
         SharedPreferences sharedPreferences = getSharedPreferences("personalInfo", Context.MODE_PRIVATE);
-        String user_mobile = sharedPreferences.getString("userMobile","");
-        String name = sharedPreferences.getString("firstName","")+sharedPreferences.getString("lastName","");
-        String dbqry = "INSERT INTO `hostel_rent_temp`(`user_mobile`, `user_name`, `rent_single_nonac`, `rent_single_ac`, `rent_double_nonac`, `rent_double_ac`) VALUES ("+ "'"+user_mobile+"'"+","+"'"+name+"'"+","+rent_single_nonac+","+rent_single_ac+","+rent_double_nonac+","+rent_double_ac+")";
+        String user_mobile = sharedPreferences.getString("userMobile", "");
+        String name = sharedPreferences.getString("firstName", "") + sharedPreferences.getString("lastName", "");
+        String dbqry = "INSERT INTO `hostel_rent_temp`(`user_mobile`,`user_name`,`rent_single_nonac`,`rent_single_ac`,`rent_double_nonac`,`rent_double_ac`) VALUES (" + "'" + user_mobile + "'" + "," + "'" + name + "'" + "," + rent_single_nonac + "," + rent_single_ac + "," + rent_double_nonac + "," + rent_double_ac + ")";
+        String dbqry2 = "UPDATE `hostel_rent_temp` SET `rent_single_nonac`=" + rent_single_nonac + ",`rent_single_ac`=" + rent_single_ac + ",`rent_double_nonac`=" + rent_double_nonac + ",`rent_double_ac`=" + rent_double_ac + " WHERE user_mobile=" + "'" + user_mobile + "'";
+        String url = "http://flatlet.in/webservicesbusiness/dataUpdate.jsp?dbqry=" + dbqry + "&dbqry2=" + dbqry2 + "&phone=" + user_mobile;
+        url = url.replace(" ", "%20");
 
-       String url =  "http://flatlet.in/webservicesbusiness/dataUpdate.jsp?dbqry="+dbqry;
-        url = url.replace(" ","%20");
-
-        Log.i("TAG", "sendUpdatedDetailsToDatabase:URL sent to server is "+url);
+        Log.i("TAG", "sendUpdatedDetailsToDatabase:URL sent to server is " + url);
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressBar.setVisibility(View.INVISIBLE);
+                approvalImage.setVisibility(View.VISIBLE);
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"Something went wrong",Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.INVISIBLE);
+                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
             }
         });
         stringRequest.setTag("MyRequest");

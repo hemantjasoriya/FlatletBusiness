@@ -54,7 +54,6 @@ public class StatisticFragment extends Fragment {
         editDetails = view.findViewById(R.id.editDetails);
 
 
-
         return view;
     }
 
@@ -70,7 +69,12 @@ public class StatisticFragment extends Fragment {
         editDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),EditDetailsActivity.class);
+                Intent intent = new Intent(getActivity(), EditDetailsActivity.class);
+                intent.putExtra("rent_single_nonac", rent_single_nonac);
+                intent.putExtra("rent_single_ac", rent_single_ac);
+                intent.putExtra("rent_double_nonac", rent_double_nonac);
+                intent.putExtra("rent_double_ac", rent_double_ac);
+                intent.putExtra("imageCount",imageCount);
                 startActivity(intent);
             }
         });

@@ -19,11 +19,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-/**
- * Created by javax on 02-Oct-17.
- */
-
 public class CreateProfileFragment extends Fragment {
     EditText editTextFirst,editTextLast;
     Button buttonProceed;
