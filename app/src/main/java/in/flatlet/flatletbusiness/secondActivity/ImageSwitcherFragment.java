@@ -10,9 +10,6 @@ import android.view.ViewGroup;
 
 import in.flatlet.flatletbusiness.R;
 
-/**
- * Created by Dragon on 03-10-2017.
- */
 
 public class ImageSwitcherFragment extends Fragment {
 

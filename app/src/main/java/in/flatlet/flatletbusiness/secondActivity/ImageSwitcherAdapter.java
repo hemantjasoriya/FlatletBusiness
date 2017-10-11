@@ -24,6 +24,7 @@ class ImageSwitcherAdapter extends PagerAdapter {
         this.context = context;
         this.first_hostel = first_hostel;
         this.arraySize = arraySize;
+        arrayFormation();
 
     }
 
@@ -45,7 +46,12 @@ class ImageSwitcherAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         ImageView imageView = new ImageView(context);
-        Picasso.with(context).load(GalleryURL.get(position)).error(R.drawable.ic_blank_image).into(imageView);
+        if (GalleryURL.size() != 0) {
+            Picasso.with(context).load(GalleryURL.get(position)).error(R.drawable.ic_blank_image).into(imageView);
+        } else {
+            Picasso.with(context).load("http://www.kalahandi.info/wp-content/uploads/2016/05/sorry-image-not-available.png").error(R.drawable.ic_blank_image).into(imageView);
+        }
+
         container.addView(imageView, 0);
         return imageView;
 

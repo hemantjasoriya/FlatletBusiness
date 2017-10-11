@@ -1,10 +1,12 @@
 package in.flatlet.flatletbusiness;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,12 +27,26 @@ public class EditDetailsActivity extends AppCompatActivity {
     private ImageView approvalImage;
     private ProgressBar progressBar;
     private String value_rent_single_nonac, value_rent_single_ac, value_rent_double_nonac, value_rent_double_ac;
+    private Toolbar toolbar;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_details);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         edit_rent_double_ac = (EditText) findViewById(R.id.edit_rent_double_ac);
         edit_rent_double_nonac = (EditText) findViewById(R.id.edit_rent_double_nonac);
         edit_rent_single_nonac = (EditText) findViewById(R.id.edit_rent_single_nonac);
@@ -68,10 +84,14 @@ public class EditDetailsActivity extends AppCompatActivity {
             value_rent_double_ac = String.valueOf(0);
         }
 
-        edit_rent_single_nonac.setText(value_rent_single_nonac);
+        /*edit_rent_single_nonac.setText(value_rent_single_nonac);
         edit_rent_single_ac.setText(value_rent_single_ac);
         edit_rent_double_nonac.setText(value_rent_double_nonac);
-        edit_rent_double_ac.setText(value_rent_double_ac);
+        edit_rent_double_ac.setText(value_rent_double_ac);*/
+        edit_rent_single_nonac.setHint("Previous rent for Single Non AC room was"+value_rent_single_nonac);
+        edit_rent_single_ac.setHint("Older Single AC Room rent was "+value_rent_single_ac);
+        edit_rent_double_nonac.setHint("Older Double Non AC rent was"+value_rent_double_nonac);
+        edit_rent_double_ac.setHint("Older Double AC rent was"+value_rent_double_ac);
 
 
         submitNewRentButton.setOnClickListener(new View.OnClickListener() {

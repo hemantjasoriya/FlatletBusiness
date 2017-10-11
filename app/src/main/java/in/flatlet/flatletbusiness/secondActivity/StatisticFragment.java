@@ -148,7 +148,7 @@ public class StatisticFragment extends Fragment {
             locality.setText(address_secondary);
             viewsCount.setText(viewsCountTotal);
             favouriteCount.setText(countFavourite);
-            Log.i("TAG", "onPostExecute: " + countFavourite);
+
 
 
         }
